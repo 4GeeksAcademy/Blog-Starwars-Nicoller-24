@@ -15,7 +15,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			personajes: [
 
-			]
+			],
+			planetas: [
+
+			],
+			personajesfavoritos: [
+
+			],
+			planetasfavoritos: [
+
+			],
+			propiedad1: "",
+			propiedad2: "",
+			propiedad3: "",
+			propiedad4: "",
+			propiedad5: "",
+			propiedad6: ""
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -25,13 +40,77 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loadSomeData: () => {
 				const store = getStore();
 				console.log("se cargo la pagina")
-				fetch("https://www.swapi.tech/api/people/")
+				fetch("https://swapi.dev/api/people")
 					.then((response) => response.json())
 					.then((data) => {
-						(setStore({personajes: [data.results]}))
-						console.log(store.personajes)
+						console.log(data.results)
+						setStore({personajes: data.results})
+
+					}
+				)	
+			},
+			getPlanetas: () => {
+				console.log("cargar planetas")
+				fetch("https://swapi.dev/api/planets")
+					.then((response) => response.json())
+					.then((data) => {
+						console.log(data.results)
+						setStore({planetas: data.results})
+
 					})
 			},
+			añadirpersonajefavorito: (nombre, prop2, prop3, prop4, prop5, prop6) => {
+				console.log("Se añadirá a favoritos: " + nombre);
+				const store = getStore();
+				const favoritosActuales = store.personajesfavoritos || [];
+				const favoritosActualizados = [...favoritosActuales, nombre];
+				
+				setStore({
+					...store,
+					personajesfavoritos: favoritosActualizados
+				});
+				console.log(favoritosActualizados);
+			},
+			eliminarpersonajeFavorito: (nombre) => {
+				const store = getStore();
+				setStore({...store,
+					personajesfavoritos: store.personajesfavoritos.filter(favorito => favorito !== nombre) 
+				});
+			
+				console.log("Favorito eliminado:", nombre);
+			},
+			añadirplanetafavorito: (nombre) => {
+				console.log("Se añadirá a favoritos: " + nombre);
+				const store = getStore();
+				const favoritosActuales = store.planetasfavoritos || [];
+				const favoritosActualizados = [...favoritosActuales, nombre];
+				
+				setStore({
+					...store,
+					planetasfavoritos: favoritosActualizados
+				});
+				console.log(favoritosActualizados);
+			},
+			eliminarplanetaFavorito: (nombre) => {
+				const store = getStore();
+				setStore({...store,
+					planetasfavoritos: store.planetasfavoritos.filter(favorito => favorito !== nombre) 
+				});
+			
+				console.log("Favorito eliminado:", nombre);
+			},
+			traerLeerMas: (prop1, prop2, prop3, prop4, prop5, prop6) => {
+				setStore({propiedad1: prop1})
+				setStore({propiedad2: prop2})
+				setStore({propiedad3: prop3})
+				setStore({propiedad4: prop4})
+				setStore({propiedad5: prop5})
+				setStore({propiedad6: prop6})
+
+
+			}
+			},
+			
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
@@ -48,6 +127,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		}
 	};
-};
+
 
 export default getState;

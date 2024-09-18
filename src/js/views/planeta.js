@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 
-export const Demo = () => {
+export const Planeta = () => {
 	const { store, actions } = useContext(Context);
 	console.log(store.propiedad1)
 	return (
@@ -17,11 +17,11 @@ export const Demo = () => {
 			</div>
 			<div className="d-flex justify-content-between border-top border-danger mt-3" style={{padding: "30px"}}>
 				<p style={{color: "red", width: "40px"}}>Name {store.propiedad1}</p>
-				<p style={{color: "red", width: "40px"}}>birth Year{store.propiedad2}</p>
-				<p style={{color: "red", width: "40px"}}>Gender {store.propiedad3}</p>
-				<p style={{color: "red", width: "40px"}}>Height{store.propiedad4}</p>
-				<p style={{color: "red", width: "40px"}}>Skin Color{store.propiedad5}</p>
-				<p style={{color: "red", width: "40px"}}>Eye Color{store.propiedad6}</p>
+				<p style={{color: "red", width: "40px"}}>Climate {store.propiedad2}</p>
+				<p style={{color: "red", width: "40px"}}>Population {store.propiedad3}</p>
+				<p style={{color: "red", width: "40px"}}>Orbital {store.propiedad4}</p>
+				<p style={{color: "red", width: "40px"}}>Rotation Period{store.propiedad5}</p>
+				<p style={{color: "red", width: "40px"}}>Diameter {store.propiedad6}</p>
 				
 			</div>
 		</div>
