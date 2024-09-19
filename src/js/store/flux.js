@@ -59,8 +59,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					})
 			},
-			añadirpersonajefavorito: (nombre, prop2, prop3, prop4, prop5, prop6) => {
+			añadirpersonajefavorito: (nombre, url) => {
 				console.log("Se añadirá a favoritos: " + nombre);
+				console.log("Se añadirá a favoritos: " + url);
 				const store = getStore();
 				const favoritosActuales = store.personajesfavoritos || [];
 				const favoritosActualizados = [...favoritosActuales, nombre];
