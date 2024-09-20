@@ -25,12 +25,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planetasfavoritos: [
 
 			],
-			propiedad1: "",
-			propiedad2: "",
-			propiedad3: "",
-			propiedad4: "",
-			propiedad5: "",
-			propiedad6: ""
+			propiedadurl: ""
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -100,18 +95,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 				console.log("Favorito eliminado:", nombre);
 			},
-			traerLeerMas: (prop1, prop2, prop3, prop4, prop5, prop6) => {
-				setStore({propiedad1: prop1})
-				setStore({propiedad2: prop2})
-				setStore({propiedad3: prop3})
-				setStore({propiedad4: prop4})
-				setStore({propiedad5: prop5})
-				setStore({propiedad6: prop6})
-
-
-			}
+			traerLeerMas: (urlitem) => {
+				const store = getStore();
+				var url = urlitem;
+				const arr = url.split('/')
+				const idfinal = arr[arr.length-2]
+				setStore({propiedadurl: idfinal})
+				console.log(store.propiedadurl)
 			},
-			
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
@@ -126,6 +117,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			}
+		}
 		}
 	};
 

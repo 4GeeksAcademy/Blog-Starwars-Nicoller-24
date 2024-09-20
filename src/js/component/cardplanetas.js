@@ -4,6 +4,17 @@ import { Context } from "../store/appContext";
 
 export const CardPlanetas = (props) => {
     const { store, actions } = useContext(Context);
+    const  [uid, setUid] = useState("")
+    function traeruid () {
+        
+            var url = props.url
+                        const arr = url.split('/')
+                        const idfinal = arr[arr.length-2]
+                        setUid(idfinal)
+
+    }
+
+    useEffect(() => traeruid()  ,[])
 
     return (
         <>
@@ -31,10 +42,11 @@ export const CardPlanetas = (props) => {
                             Terrain: {props.terrain}
                         </p>
                     </div>
-                    <Link to="/planeta">
+                    <Link to={"/planeta/" + uid}>
                         <button
                             type="button"
                             className="btn btn-outline-primary"
+                            onClick={()=> actions.traerLeerMas(props.url)}
                         >
                             Read more
                         </button>
@@ -64,3 +76,4 @@ export const CardPlanetas = (props) => {
         </>
     );
 };
+

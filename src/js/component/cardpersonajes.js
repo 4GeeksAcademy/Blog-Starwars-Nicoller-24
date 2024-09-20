@@ -4,7 +4,17 @@ import { Context } from "../store/appContext";
 
 export const CardPersonajes = (props) => {
     const { store, actions } = useContext(Context);
+    const  [uid, setUid] = useState("")
+    function traeruid () {
+        
+            var url = props.url
+                        const arr = url.split('/')
+                        const idfinal = arr[arr.length-2]
+                        setUid(idfinal)
 
+    }
+
+    useEffect(() => traeruid()  ,[])
     return (
         <>
             <div
@@ -34,8 +44,8 @@ export const CardPersonajes = (props) => {
                             Eye-Color: {props.eye_color}
                         </p>
                     </div>
-                    <Link to="/planeta">
-                        <button type="button" className="btn btn-outline-primary">
+                    <Link to={"/personaje/" + uid }>
+                        <button onClick={()=> actions.traerLeerMas(props.url)} type="button" className="btn btn-outline-primary">
                             Read more
                         </button>
                     </Link>

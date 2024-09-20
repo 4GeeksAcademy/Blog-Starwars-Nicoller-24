@@ -24,7 +24,7 @@ export const Home = () => {
 				
 				{store.personajes.map((item, index) => {
 					return (
-						<CardPersonajes key={index}  name= {item.name} gender={item.gender} haircolor={item.hair_color} eyecolor={item.eye_color}/>
+						<CardPersonajes key={index} url={item.url} name= {item.name} gender={item.gender} haircolor={item.hair_color} eyecolor={item.eye_color}/>
 					);
 				})}
 			</div>
@@ -41,7 +41,7 @@ export const Home = () => {
 				
 				{store.planetas.map((item, index) => {
 					return (
-						<CardPlanetas key={index} name={item.name} population={item.population} terrain={item.terrain}/>
+						<CardPlanetas key={index} url={item.url} name={item.name} population={item.population} terrain={item.terrain}/>
 					);
 				})}
 			</div>
