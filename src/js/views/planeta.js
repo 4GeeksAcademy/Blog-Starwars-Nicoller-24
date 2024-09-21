@@ -8,13 +8,13 @@ export const Planeta = () => {
 	const params = useParams();
     console.log(params)
 	const [planetData, setPlanetData] = useState ([])
-	function traerpersonaje () {
-		fetch("https://swapi.dev/api/planets/" + store.propiedadurl)
+	function traerPlaneta () {
+		fetch("https://swapi.dev/api/planets/" + params.planeta_id)
 			.then((response) => response.json())
 			.then((data) => setPlanetData(data))
 	}
 	useEffect(()=> 
-		traerpersonaje()
+		traerPlaneta()
 		
 		,[])
 	return (

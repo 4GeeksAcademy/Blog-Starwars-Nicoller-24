@@ -9,7 +9,7 @@ export const Personaje = (props) => {
     console.log(params)
 	const [personaData, setPersonaData] = useState ([])
 	function traerpersonaje () {
-		fetch("https://swapi.dev/api/people/" + store.propiedadurl)
+		fetch("https://swapi.dev/api/people/" + params.personaje_id)
 			.then((response) => response.json())
 			.then((data) => setPersonaData(data))
 	}
