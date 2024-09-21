@@ -77,16 +77,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			añadirplanetafavorito: (nombre) => {
 				console.log("Se añadirá a favoritos: " + nombre);
-				const store = getStore();
-				const favoritosActuales = store.planetasfavoritos || [];
-				const favoritosActualizados = [...favoritosActuales, nombre];
-				
 				setStore({
-					...store,
-					planetasfavoritos: favoritosActualizados
+					...getStore(),
+					planetasfavoritos: [...(getStore().planetasfavoritos || []), nombre]
 				});
-				console.log(favoritosActualizados);
-			},
+				console.log(getStore().planetasfavoritos);
+			}
+			,
 			eliminarplanetaFavorito: (nombre) => {
 				const store = getStore();
 				setStore({...store,
