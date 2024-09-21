@@ -57,7 +57,6 @@ export const CardPlanetas = (props) => {
                         style={{ float: "right" }}
                         onClick={() => {
                             actions.añadirplanetafavorito(props.name);
-                            changeBackgraund();
                         }}
                     >
                         <svg

@@ -55,7 +55,6 @@ export const CardPersonajes = (props) => {
                         style={{ float: "right" }}
                         onClick={() => {
                             actions.añadirpersonajefavorito(props.name);
-                            changeBackgraund();
                         }}
                     >
                         <svg
